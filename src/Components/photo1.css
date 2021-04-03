@@ -1,0 +1,15 @@
+div.photoBox {
+    align-content: center;
+    width: 80%;
+    margin: auto;
+}
+
+img.playerphoto {
+    width: 80%;
+    margin: 2%;
+    align-content: center;
+    max-height: fit-content;
+    max-width: fit-content;
+    align-self: center;
+    border-radius: 15px;
+}

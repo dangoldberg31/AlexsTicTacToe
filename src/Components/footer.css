@@ -11,17 +11,21 @@ footer {
     background-color: black;
     display: block;
     border-radius: 15px;
-    font-family: bebas neue;
+    font-family: nunito;
+    margin-top: 30px;
 }
 
 #footertext {
     color: white;
     margin-left: 10%;
     margin-right: 10%;
-    font-size: 16px;;
+    font-size: 20px;;
+    font-weight: 100;
+
 }
 
 span.ggi {
-    font-weight: 700;
+    font-weight: 700 !important;
+    letter-spacing: .01em;
 }
 

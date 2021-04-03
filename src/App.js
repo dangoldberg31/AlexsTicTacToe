@@ -1,15 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
 import {Header} from './Components/header'
 import {Footer} from './Components/footer'
-import {GameBoard} from './Components/gameboard'
+// import {GameBoard} from './Components/gameboard'
+import { PlayerSelect } from './Components/playerselect';
+// import {useState} from 'react';
 
 function App() {
+
   return (
     <div className="App">
       <Header />
-        <p>Some text from the app component</p>
-      <GameBoard />
+      <main>
+        <h2>Tic Tac Toe</h2>
+        <PlayerSelect />
+      </main>
       <Footer />
     </div>
   );
