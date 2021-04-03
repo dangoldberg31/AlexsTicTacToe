@@ -1,0 +1,113 @@
+
+  #gameboard {
+      text-align: center;
+  }
+
+  #playerselect {
+      display: inline-block;
+  }
+
+  div.playerchoicecontainer {
+      display: block;
+  }
+  h2 {
+    text-align: center;
+    ;
+  }
+  
+  h3 {
+    font-size: 32px;
+    margin-top: 10px;
+    background-color:hsl(206, 50%, 50%);
+    display: block;
+    padding: 10px;
+    line-height: 1em;
+    border-radius: 10px;
+    font-family: bebas neue;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 5px 5px;
+    position: relative;
+    font-size: 18px;
+    width: 100%;
+    z-index: 9;
+    bottom: 0;
+    background-color: black;
+    display: block;
+  }
+  
+  footer p {
+    color: white;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  
+  span.ggi {
+    font-weight: 700;
+  }
+  
+  #board {
+    display: grid;
+    grid-template-columns: 300px, 1fr, 1fr;
+    grid-template-rows: 1fr, 1fr, 1fr;
+    gap: 5%;
+    background-color: hsl(206, 50%, 80%);
+    border: black solid 1px;
+    width: 80%;
+  }
+  
+  .box {
+    border: red, solid, 5px;
+    text-align: center;
+    height: 150px;
+    width: 150px;
+    margin: 2%;
+    padding: 2%;
+  }
+  
+  #box1A {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+   }
+
+  #box1B {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+   }
+
+  #box1C {
+    grid-column: 3 / span 1;
+    grid-row: 1 / span 1;
+   }
+   
+  #box2A {
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+  }
+
+  #box2B {
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+  }
+
+  #box2C {
+    grid-column: 3 / span 1;
+    grid-row: 2 / span 1;
+  }
+
+  #box3A {
+    grid-column: 1 / span 1;
+    grid-row: 3 / span 1;
+  }
+
+  #box3B {
+    grid-column: 2 / span 1;
+    grid-row: 3 / span 1;
+  }
+
+  #box3C {
+    grid-column: 3 / span 1;
+    grid-row: 3 / span 1;
+  }
