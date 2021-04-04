@@ -8,7 +8,6 @@ import jess from '../jess.jpg';
 import background from '../background.jpg';
 
 export const GameBoard = ({player1, player2}) => {
-    const [currentPlayer, setCurrentPlayer] = useState('Flipping a coin...');
     const [box1A, setBox1A] = useState("free");
     const [box1AImage, setBox1AImage] = useState(background);
     const [box1B, setBox1B] = useState("free");
@@ -28,36 +27,19 @@ export const GameBoard = ({player1, player2}) => {
     const [box3C, setBox3C] = useState("free");
     const [box3CImage, setBox3CImage] = useState(background);
     const [turnOrder] = useState([player1, player2, player1, player2, player1, player2, player1, player1, player2, player1]);
-    const [turnCount, setTurnCount] = useState();
-    const [firstTurn, setFirstTurn] = useState(true);
-    const [gameState, setGameState] = useState();
+    const [turnCount, setTurnCount] = useState(Math.floor(Math.random()*2));
+    // const [firstTurn, setFirstTurn] = useState(true);
+    // const [turnOrder[turnCount], setCurrentPlayer] = useState(turnOrder[turnCount]);
+    const [gameState, setGameState] = useState('Flipping a coin...');
 
-    useEffect(() => {
-        if (firstTurn) {
-            setTurnCount(Math.floor(Math.random()*2));
-            setTimeout(() => {
-                assignCurrentPlayer();
-                setGameState(`It's ${currentPlayer}'s turn!`);
-            }, 2000)
-            setFirstTurn(false);
-            return;
-        } else {
-            setTurnCount((prev) => prev+1);
-            assignCurrentPlayer();
 
-        }},[box1A, box1B, box1C, box2A, box2B, box2C, box3A, box3B, box3C])
-
-    const assignCurrentPlayer = () => {
-        let turn = turnOrder[turnCount];
-        setCurrentPlayer(turn);
-    }
 
     const pickPhoto = () => {
-        if (currentPlayer === "Alex") {
+        if (turnOrder[turnCount] === "Alex") {
             return alex
-        } else if (currentPlayer === "Jess") {
+        } else if (turnOrder[turnCount] === "Jess") {
             return jess
-        } else if (currentPlayer === "David") {
+        } else if (turnOrder[turnCount] === "David") {
             return david
         }
         }
@@ -66,7 +48,8 @@ export const GameBoard = ({player1, player2}) => {
         if (box1A === 'free') {
             let player = pickPhoto();
             setBox1AImage(player);
-            setBox1A(currentPlayer);
+            setBox1A(turnOrder[turnCount]);
+            setTurnCount((prev) => prev+1);
         }
     }
 
@@ -74,7 +57,8 @@ export const GameBoard = ({player1, player2}) => {
         if (box1B === 'free') {
             let player = pickPhoto();
             setBox1BImage(player);
-            setBox1B(currentPlayer);
+            setBox1B(turnOrder[turnCount]);
+            setTurnCount((prev) => prev+1);
         }
     }
 
@@ -82,7 +66,8 @@ export const GameBoard = ({player1, player2}) => {
         if (box1C === 'free') {
             let player = pickPhoto();
             setBox1CImage(player);
-            setBox1C(currentPlayer);
+            setBox1C(turnOrder[turnCount]);
+            setTurnCount((prev) => prev+1);
         }
     }
 
@@ -90,7 +75,8 @@ export const GameBoard = ({player1, player2}) => {
         if (box2A === 'free') {
             let player = pickPhoto();
             setBox2AImage(player);
-            setBox2A(currentPlayer);
+            setBox2A(turnOrder[turnCount]);
+            setTurnCount((prev) => prev+1);
         }
     }
 
@@ -98,7 +84,8 @@ export const GameBoard = ({player1, player2}) => {
         if (box2B === 'free') {
             let player = pickPhoto();
             setBox2BImage(player);
-            setBox2B(currentPlayer);
+            setBox2B(turnOrder[turnCount]);
+            setTurnCount((prev) => prev+1);
         }
     }
 
@@ -106,7 +93,8 @@ export const GameBoard = ({player1, player2}) => {
         if (box2C === 'free') {
             let player = pickPhoto();
             setBox2CImage(player);
-            setBox2C(currentPlayer);
+            setBox2C(turnOrder[turnCount]);
+            setTurnCount((prev) => prev+1);
         }
     }
 
@@ -114,7 +102,8 @@ export const GameBoard = ({player1, player2}) => {
         if (box3A === 'free') {
             let player = pickPhoto();
             setBox3AImage(player);
-            setBox3A(currentPlayer);
+            setBox3A(turnOrder[turnCount]);
+            setTurnCount((prev) => prev+1);
         }
     }
 
@@ -122,7 +111,8 @@ export const GameBoard = ({player1, player2}) => {
         if (box3B === 'free') {
             let player = pickPhoto();
             setBox3BImage(player);
-            setBox3B(currentPlayer);
+            setBox3B(turnOrder[turnCount]);
+            setTurnCount((prev) => prev+1);
         }
     }
 
@@ -130,14 +120,21 @@ export const GameBoard = ({player1, player2}) => {
         if (box3C === 'free') {
             let player = pickPhoto();
             setBox3CImage(player);
-            setBox3C(currentPlayer);
+            setBox3C(turnOrder[turnCount]);
+            setTurnCount((prev) => prev+1);
         }
     }
+
+    setTimeout(() => {    
+        setGameState(`It's ${turnOrder[turnCount]}'s turn!`);
+        }, 2000)
+    
+
  
     return (
         <div>
             <h4>{gameState}</h4>
-            <p>*{turnOrder[1]}* Type currentPlayer is {typeof currentPlayer} *{currentPlayer}* Type turnOrder is {typeof turnOrder} Turn count is {turnCount} Turnorder is {turnOrder}  playerTurn is {currentPlayer}</p>
+            <p>*{turnOrder[1]}* Type turnOrder[turnCount] is {typeof turnOrder[turnCount]} *{turnOrder[turnCount]}* Type turnOrder is {typeof turnOrder} *{turnOrder}* Turn count is {typeof turnCount} {turnCount} </p>
             <br />
             <div id="boardcontainer" className="section">
                 <div classname="gameboardplayercontainer">
