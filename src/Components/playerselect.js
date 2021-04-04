@@ -15,9 +15,9 @@ export const PlayerSelect = () => {
         if (player1 !=='Select Player 1' && player2 !=='Select Player 2' && player1 !== player2) {
             setGameState('Playing');
         } else if (player1 === 'Select Player 1' || player2 === 'Select Player 2') {
-            setPlayerPrompt("Choose both players!");
+            setPlayerPrompt('Choose both players!');
         } else if (player1 === player2) {
-            setPlayerPrompt("Choose different players!");
+            setPlayerPrompt('Choose different players!');
     }}
 
     const handlePlayer1Submit = event => {

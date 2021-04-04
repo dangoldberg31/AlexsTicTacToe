@@ -28,9 +28,9 @@ export const GameBoard = ({player1, player2}) => {
     const [box3CImage, setBox3CImage] = useState(background);
     const [turnOrder] = useState([player1, player2, player1, player2, player1, player2, player1, player1, player2, player1]);
     const [turnCount, setTurnCount] = useState(Math.floor(Math.random()*2));
-    // const [firstTurn, setFirstTurn] = useState(true);
-    // const [turnOrder[turnCount], setCurrentPlayer] = useState(turnOrder[turnCount]);
-    const [gameState, setGameState] = useState('Flipping a coin...');
+    const [gameState, setGameState] = useState(`${turnOrder[turnCount]} won the coin toss!`);
+    const [firstMove, setFirstMove] = useState(true);
+    const [victory, setVictory] = useState();
 
 
 
@@ -125,16 +125,48 @@ export const GameBoard = ({player1, player2}) => {
         }
     }
 
-    setTimeout(() => {    
-        setGameState(`It's ${turnOrder[turnCount]}'s turn!`);
-        }, 2000)
-    
+    const winner = () => {
+        if (box1A !== "free" && box1A === box1B && box1A === box1C) {
+            return [true, box1A];
+        } else if (box2A !== "free" && box2A === box2B && box2A === box2C) {
+            return [true, box2A];
+        } else if (box3A !== "free" && box3A === box3B && box3A === box3C) {
+            return [true, box3A];
+        } else if (box1A !== "free" && box1A === box2A && box1A === box3A) {
+            return [true, box1A];
+        } else if (box1B !== "free" && box1B === box2B && box1B === box3B) {
+            return [true, box1B];
+        } else if (box1C !== "free" && box1C === box2C && box1C === box3C) {
+            return [true, box1C];
+        } else if (box1A !== "free" && box1A === box2B && box1A === box3C) {
+            return [true, box1A];
+        } else if (box3A !== "free" && box3A === box2B && box3A === box1C) {
+            return [true, box3A];
+        } else {
+            return [false, null];
+        }
+    }
+        
 
- 
+    useEffect(() => {
+        if (firstMove) {
+            setFirstMove(false)
+            return; 
+        } else {
+            setGameState(`It's ${turnOrder[turnCount]}'s turn.`);
+            let winnerCheck = winner();
+            if (winnerCheck[0] === true) {
+                setVictory(`${winnerCheck[1]} wins!`)
+            }
+
+        }
+    },[turnCount])
+
     return (
         <div>
-            <h4>{gameState}</h4>
-            <p>*{turnOrder[1]}* Type turnOrder[turnCount] is {typeof turnOrder[turnCount]} *{turnOrder[turnCount]}* Type turnOrder is {typeof turnOrder} *{turnOrder}* Turn count is {typeof turnCount} {turnCount} </p>
+            <h4 id="victory">{gameState}</h4>
+            <h2>{victory}</h2>
+            {/* <p>*{turnOrder[1]}* Type turnOrder[turnCount] is {typeof turnOrder[turnCount]} *{turnOrder[turnCount]}* Type turnOrder is {typeof turnOrder} *{turnOrder}* Turn count is {typeof turnCount} {turnCount} </p> */}
             <br />
             <div id="boardcontainer" className="section">
                 <div classname="gameboardplayercontainer">
