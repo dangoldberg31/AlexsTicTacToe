@@ -50,6 +50,7 @@ export const GameBoard = ({player1, player2}) => {
             setBox1AImage(player);
             setBox1A(turnOrder[turnCount]);
             setTurnCount((prev) => prev+1);
+            showWinner()
         }
     }
 
@@ -59,6 +60,7 @@ export const GameBoard = ({player1, player2}) => {
             setBox1BImage(player);
             setBox1B(turnOrder[turnCount]);
             setTurnCount((prev) => prev+1);
+            showWinner()
         }
     }
 
@@ -68,6 +70,7 @@ export const GameBoard = ({player1, player2}) => {
             setBox1CImage(player);
             setBox1C(turnOrder[turnCount]);
             setTurnCount((prev) => prev+1);
+            showWinner()
         }
     }
 
@@ -77,6 +80,7 @@ export const GameBoard = ({player1, player2}) => {
             setBox2AImage(player);
             setBox2A(turnOrder[turnCount]);
             setTurnCount((prev) => prev+1);
+            showWinner()
         }
     }
 
@@ -86,6 +90,7 @@ export const GameBoard = ({player1, player2}) => {
             setBox2BImage(player);
             setBox2B(turnOrder[turnCount]);
             setTurnCount((prev) => prev+1);
+            showWinner()
         }
     }
 
@@ -95,6 +100,7 @@ export const GameBoard = ({player1, player2}) => {
             setBox2CImage(player);
             setBox2C(turnOrder[turnCount]);
             setTurnCount((prev) => prev+1);
+            showWinner()
         }
     }
 
@@ -104,6 +110,7 @@ export const GameBoard = ({player1, player2}) => {
             setBox3AImage(player);
             setBox3A(turnOrder[turnCount]);
             setTurnCount((prev) => prev+1);
+            showWinner()
         }
     }
 
@@ -113,6 +120,7 @@ export const GameBoard = ({player1, player2}) => {
             setBox3BImage(player);
             setBox3B(turnOrder[turnCount]);
             setTurnCount((prev) => prev+1);
+            showWinner()
         }
     }
 
@@ -122,6 +130,7 @@ export const GameBoard = ({player1, player2}) => {
             setBox3CImage(player);
             setBox3C(turnOrder[turnCount]);
             setTurnCount((prev) => prev+1);
+            showWinner()
         }
     }
 
@@ -146,7 +155,13 @@ export const GameBoard = ({player1, player2}) => {
             return [false, null];
         }
     }
-        
+    
+    const showWinner = () => {
+        let winnerCheck = winner();
+        if (winnerCheck[0] === true) {
+            setVictory(`${winnerCheck[1]} wins!`)
+        }
+    }
 
     useEffect(() => {
         if (firstMove) {
@@ -154,13 +169,12 @@ export const GameBoard = ({player1, player2}) => {
             return; 
         } else {
             setGameState(`It's ${turnOrder[turnCount]}'s turn.`);
-            let winnerCheck = winner();
-            if (winnerCheck[0] === true) {
-                setVictory(`${winnerCheck[1]} wins!`)
-            }
-
         }
-    },[turnCount])
+    },[turnCount, firstMove, turnOrder])
+
+
+
+
 
     return (
         <div>
