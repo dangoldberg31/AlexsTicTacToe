@@ -3,6 +3,12 @@
     font-size: 2em;
 }
 
+h4 {
+    text-align: center;
+    font-size: 2em;
+    font-weight: 400;
+    font-family: Bebas Neue;
+}
 
 #boardcontainer {
     margin: 2% auto;
@@ -36,7 +42,6 @@ div.gameboardplayercontainer {
     border-radius: 15px;
     width: 103%;
     height: 100%;
-
   }
   
   div.box {

@@ -1,7 +1,6 @@
 import {useState} from 'react';
 import './playerselect.css';
 import {GameBoard} from './gameboard';
-import alex from '../alexsunglasses.jpg'
 import {Photo1} from './photo1'
 import {Photo2} from './photo2'
 // import david from '../david.jpg';
